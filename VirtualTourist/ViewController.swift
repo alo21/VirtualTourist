@@ -23,6 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         deletePopUp.isHidden = true
         
         longPressRec = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(press:)))
@@ -31,12 +32,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addGestureRecognizer(longPressRec)
         
         mapView.delegate = self
-        
-    }
-    
-    @objc func makemagic() {
-        
-        print("Making magic")
         
     }
     
@@ -82,13 +77,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = .green
+            pinView!.pinTintColor = .red
             pinView!.animatesDrop = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
         }
         else {
             pinView!.annotation = annotation
         }
+        
         
         return pinView
     }
@@ -109,9 +105,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             print("Taking you the other side")
             
-            /*let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-            self.present(newViewController, animated: true, completion: nil)*/
+        
             
             let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             self.navigationController!.pushViewController(VC1, animated: true)
@@ -132,6 +126,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotation.coordinate = coordinates
             
             mapView.addAnnotation(annotation)
+            
+            NetworkRequest().getGeoPhotos()
             
             
         }

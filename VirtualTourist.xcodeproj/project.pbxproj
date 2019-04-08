@@ -15,85 +15,26 @@
 		D3A9E61C223C67C900EBBD87 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3A9E61A223C67C900EBBD87 /* VirtualTourist.xcdatamodeld */; };
 		D3A9E61E223C67D200EBBD87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A9E61D223C67D200EBBD87 /* Assets.xcassets */; };
 		D3A9E621223C67D200EBBD87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A9E61F223C67D200EBBD87 /* LaunchScreen.storyboard */; };
+		D3C177D7225BEAAD00BF65FF /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C177D5225BEAAD00BF65FF /* VirtualTourist.xcdatamodeld */; };
+		D3DE5B85225AA615003DE7CF /* GeoPhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5B84225AA615003DE7CF /* GeoPhotosResponse.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D35A400D223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F435027A1A6791B200038A29;
-			remoteInfo = OAuthSwift;
+/* Begin PBXCopyFilesBuildPhase section */
+		D35A402C223E8D6E005824C7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35A400F223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C48B28021AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftMacOS;
-		};
-		D35A4011223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4B6EE1E1BF74CE300443596;
-			remoteInfo = OAuthSwiftTVOS;
-		};
-		D35A4013223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C40890C01C11B37000E3146A;
-			remoteInfo = OAuthSwiftWatchOS;
-		};
-		D35A4015223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F451E3C5195B8CD80051434C;
-			remoteInfo = OAuthSwiftDemo;
-		};
-		D35A4017223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C49FD5241AFB5DF500791E1A;
-			remoteInfo = OAuthSwiftMacOSDemo;
-		};
-		D35A4019223DD2EE005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4D50DF71BFB693F0053B624;
-			remoteInfo = OAuthSwiftTests;
-		};
-		D35A401B223DD328005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F43502791A6791B200038A29;
-			remoteInfo = OAuthSwift;
-		};
-		D35A401D223DD4CB005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C48B28011AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftMacOS;
-		};
-		D35A401F223DD4CB005824C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C4B6EE1D1BF74CE300443596;
-			remoteInfo = OAuthSwiftTVOS;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D35A3FFF223D85BE005824C7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D35A4001223DC34B005824C7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
-		D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = "../OAuthSwift-master/OAuthSwift.xcodeproj"; sourceTree = "<group>"; };
 		D3A9E610223C67C900EBBD87 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A9E613223C67C900EBBD87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A9E615223C67C900EBBD87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +43,8 @@
 		D3A9E61D223C67D200EBBD87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A9E620223C67D200EBBD87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3A9E622223C67D200EBBD87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3C177D6225BEAAD00BF65FF /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
+		D3DE5B84225AA615003DE7CF /* GeoPhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPhotosResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,24 +58,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D35A4004223DD2ED005824C7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D35A400E223DD2EE005824C7 /* OAuthSwift.framework */,
-				D35A4010223DD2EE005824C7 /* OAuthSwift.framework */,
-				D35A4012223DD2EE005824C7 /* OAuthSwift.framework */,
-				D35A4014223DD2EE005824C7 /* OAuthSwift.framework */,
-				D35A4016223DD2EE005824C7 /* OAuthSwiftDemo.app */,
-				D35A4018223DD2EE005824C7 /* OAuthSwiftMacOSDemo.app */,
-				D35A401A223DD2EE005824C7 /* OAuthSwiftTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D3A9E607223C67C900EBBD87 = {
 			isa = PBXGroup;
 			children = (
-				D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */,
 				D3A9E612223C67C900EBBD87 /* VirtualTourist */,
 				D3A9E611223C67C900EBBD87 /* Products */,
 			);
@@ -149,6 +77,9 @@
 		D3A9E612223C67C900EBBD87 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				D3DE5B87225BEA34003DE7CF /* Model */,
+				D3DE5B86225AA74E003DE7CF /* Network */,
+				D3DE5B83225AA5D6003DE7CF /* Codable */,
 				D3A9E613223C67C900EBBD87 /* AppDelegate.swift */,
 				D3A9E615223C67C900EBBD87 /* ViewController.swift */,
 				D3A9E617223C67C900EBBD87 /* Main.storyboard */,
@@ -157,9 +88,32 @@
 				D3A9E622223C67D200EBBD87 /* Info.plist */,
 				D3A9E61A223C67C900EBBD87 /* VirtualTourist.xcdatamodeld */,
 				D35A3FFF223D85BE005824C7 /* DetailViewController.swift */,
-				D35A4001223DC34B005824C7 /* NetworkRequest.swift */,
 			);
 			path = VirtualTourist;
+			sourceTree = "<group>";
+		};
+		D3DE5B83225AA5D6003DE7CF /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				D3DE5B84225AA615003DE7CF /* GeoPhotosResponse.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		D3DE5B86225AA74E003DE7CF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D35A4001223DC34B005824C7 /* NetworkRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D3DE5B87225BEA34003DE7CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3C177D5225BEAAD00BF65FF /* VirtualTourist.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,13 +126,11 @@
 				D3A9E60C223C67C900EBBD87 /* Sources */,
 				D3A9E60D223C67C900EBBD87 /* Frameworks */,
 				D3A9E60E223C67C900EBBD87 /* Resources */,
+				D35A402C223E8D6E005824C7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D35A401E223DD4CB005824C7 /* PBXTargetDependency */,
-				D35A4020223DD4CB005824C7 /* PBXTargetDependency */,
-				D35A401C223DD328005824C7 /* PBXTargetDependency */,
 			);
 			name = VirtualTourist;
 			productName = VirtualTourist;
@@ -211,70 +163,12 @@
 			mainGroup = D3A9E607223C67C900EBBD87;
 			productRefGroup = D3A9E611223C67C900EBBD87 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D35A4004223DD2ED005824C7 /* Products */;
-					ProjectRef = D35A4003223DD2ED005824C7 /* OAuthSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D3A9E60F223C67C900EBBD87 /* VirtualTourist */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D35A400E223DD2EE005824C7 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = D35A400D223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A4010223DD2EE005824C7 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = D35A400F223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A4012223DD2EE005824C7 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = D35A4011223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A4014223DD2EE005824C7 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = D35A4013223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A4016223DD2EE005824C7 /* OAuthSwiftDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftDemo.app;
-			remoteRef = D35A4015223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A4018223DD2EE005824C7 /* OAuthSwiftMacOSDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftMacOSDemo.app;
-			remoteRef = D35A4017223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D35A401A223DD2EE005824C7 /* OAuthSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuthSwiftTests.xctest;
-			remoteRef = D35A4019223DD2EE005824C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D3A9E60E223C67C900EBBD87 /* Resources */ = {
@@ -294,6 +188,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C177D7225BEAAD00BF65FF /* VirtualTourist.xcdatamodeld in Sources */,
+				D3DE5B85225AA615003DE7CF /* GeoPhotosResponse.swift in Sources */,
 				D3A9E616223C67C900EBBD87 /* ViewController.swift in Sources */,
 				D3A9E614223C67C900EBBD87 /* AppDelegate.swift in Sources */,
 				D3A9E61C223C67C900EBBD87 /* VirtualTourist.xcdatamodeld in Sources */,
@@ -303,24 +199,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D35A401C223DD328005824C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwift;
-			targetProxy = D35A401B223DD328005824C7 /* PBXContainerItemProxy */;
-		};
-		D35A401E223DD4CB005824C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwiftMacOS;
-			targetProxy = D35A401D223DD4CB005824C7 /* PBXContainerItemProxy */;
-		};
-		D35A4020223DD4CB005824C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwiftTVOS;
-			targetProxy = D35A401F223DD4CB005824C7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D3A9E617223C67C900EBBD87 /* Main.storyboard */ = {
@@ -461,6 +339,7 @@
 		D3A9E626223C67D200EBBD87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82DRQAPC23;
@@ -479,6 +358,7 @@
 		D3A9E627223C67D200EBBD87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 82DRQAPC23;
@@ -524,6 +404,16 @@
 				D3A9E61B223C67C900EBBD87 /* VirtualTourist.xcdatamodel */,
 			);
 			currentVersion = D3A9E61B223C67C900EBBD87 /* VirtualTourist.xcdatamodel */;
+			path = VirtualTourist.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D3C177D5225BEAAD00BF65FF /* VirtualTourist.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3C177D6225BEAAD00BF65FF /* VirtualTourist.xcdatamodel */,
+			);
+			currentVersion = D3C177D6225BEAAD00BF65FF /* VirtualTourist.xcdatamodel */;
 			path = VirtualTourist.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
