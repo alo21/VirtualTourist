@@ -7,17 +7,20 @@
 //
 
 import Foundation
-import OAuthSwift
+import CoreData
 
 
 class NetworkRequest {
     
-    let API_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4142777d545d14823760b6f4f2f3553b&lat=42.464828&lon=14.214090&format=json&nojsoncallback=1"
+    let API_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4142777d545d14823760b6f4f2f3553b&format=json&nojsoncallback=1"
+
+    var dataController: DataController!
     
     
-    func getGeoPhotos(){
+    func getGeoPhotos(lat: String, lon: String){
+
         
-        let request = URLRequest(url: URL(string: API_URL)!)
+        let request = URLRequest(url: URL(string: API_URL + "&lat=" + lat + "&lon=" + lon )!)
         let session = URLSession.shared
         
     
@@ -45,18 +48,9 @@ class NetworkRequest {
                 
                 print(Photos)
                 
-                //print(radioList)
+            
+
                 
-//                if RadioData().getRadios().count == 0 {
-//
-//                    radioList.results.forEach{ station in
-//
-//
-//                        RadioData().addRadio(radio: station)
-//                    }
-//
-//                }
-//
 //                DispatchQueue.main.async {
 //
 //                    print("Done getting data")

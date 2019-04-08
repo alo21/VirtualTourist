@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
     var removingPins = false
-    
+    var dataConroller: DataController!
     var longPressRec = UILongPressGestureRecognizer()
+    var locations: [Location] = []
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -23,6 +25,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Fetching locations from CoreData
+        let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
+        if let result = try? dataConroller.viewContext.fetch(fetchRequest) {
+            locations = result
+            print("Restoring locations...")
+            print(locations.count)
+            print("locations restored")
+            populateMap()
+        }
         
         deletePopUp.isHidden = true
         
@@ -114,6 +125,23 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     }
     
+    func saveLocationModel(lat: String, lon: String){
+        
+        //Creating the transtient to save
+        let location = Location(context: dataConroller.viewContext)
+        location.lat = lat
+        location.lon = lon
+        
+        //trying to save into disk
+        do {
+            try? dataConroller.viewContext.save()
+            print("coordinates saved")
+        } catch {
+            print("I can't save the coordinates")
+        }
+        
+    }
+    
     
     @objc func addAnnotation(press: UILongPressGestureRecognizer) {
         
@@ -125,12 +153,33 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinates
             
-            mapView.addAnnotation(annotation)
+            let latString = String(format:"%f", coordinates.latitude)
+            let lonString = String(format:"%f", coordinates.longitude)
             
-            NetworkRequest().getGeoPhotos()
+            print(coordinates)
+            
+            mapView.addAnnotation(annotation)
+            saveLocationModel(lat: latString, lon: lonString)
+            
+            NetworkRequest().getGeoPhotos(lat: latString, lon: lonString)
             
             
         }
+        
+    }
+    
+    
+    func populateMap(){
+        
+        for location in locations {
+            
+            let annotations = MKPointAnnotation()
+            annotations.coordinate = CLLocationCoordinate2D(latitude: (location.lat! as NSString).doubleValue, longitude: (location.lon! as NSString).doubleValue)
+            
+            mapView.addAnnotation(annotations)
+            
+        }
+        
         
     }
     
