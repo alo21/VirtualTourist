@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D34CA4ED225FFADE00D4B73F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CA4EC225FFADE00D4B73F /* DetailCollectionViewCell.swift */; };
 		D35A4000223D85BE005824C7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A3FFF223D85BE005824C7 /* DetailViewController.swift */; };
 		D35A4002223DC34B005824C7 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4001223DC34B005824C7 /* NetworkRequest.swift */; };
+		D37677D1225E9A2F008071E5 /* photosLocationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37677D0225E9A2F008071E5 /* photosLocationClass.swift */; };
 		D3A9E614223C67C900EBBD87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A9E613223C67C900EBBD87 /* AppDelegate.swift */; };
 		D3A9E616223C67C900EBBD87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A9E615223C67C900EBBD87 /* ViewController.swift */; };
 		D3A9E619223C67C900EBBD87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A9E617223C67C900EBBD87 /* Main.storyboard */; };
@@ -34,8 +36,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D34CA4EC225FFADE00D4B73F /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D35A3FFF223D85BE005824C7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D35A4001223DC34B005824C7 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		D37677D0225E9A2F008071E5 /* photosLocationClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photosLocationClass.swift; sourceTree = "<group>"; };
 		D3A9E610223C67C900EBBD87 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A9E613223C67C900EBBD87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A9E615223C67C900EBBD87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D37677CF225E9A05008071E5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D37677D0225E9A2F008071E5 /* photosLocationClass.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		D3A9E607223C67C900EBBD87 = {
 			isa = PBXGroup;
 			children = (
@@ -79,17 +91,19 @@
 		D3A9E612223C67C900EBBD87 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				D37677CF225E9A05008071E5 /* Data */,
 				D3DE5B87225BEA34003DE7CF /* Model */,
 				D3DE5B86225AA74E003DE7CF /* Network */,
 				D3DE5B83225AA5D6003DE7CF /* Codable */,
 				D3A9E613223C67C900EBBD87 /* AppDelegate.swift */,
 				D3A9E615223C67C900EBBD87 /* ViewController.swift */,
+				D35A3FFF223D85BE005824C7 /* DetailViewController.swift */,
 				D3A9E617223C67C900EBBD87 /* Main.storyboard */,
 				D3A9E61D223C67D200EBBD87 /* Assets.xcassets */,
 				D3A9E61F223C67D200EBBD87 /* LaunchScreen.storyboard */,
 				D3A9E622223C67D200EBBD87 /* Info.plist */,
 				D3A9E61A223C67C900EBBD87 /* VirtualTourist.xcdatamodeld */,
-				D35A3FFF223D85BE005824C7 /* DetailViewController.swift */,
+				D34CA4EC225FFADE00D4B73F /* DetailCollectionViewCell.swift */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -194,8 +208,10 @@
 				D3C177D7225BEAAD00BF65FF /* virt.xcdatamodeld in Sources */,
 				D3DE5B85225AA615003DE7CF /* GeoPhotosResponse.swift in Sources */,
 				D3A9E616223C67C900EBBD87 /* ViewController.swift in Sources */,
+				D34CA4ED225FFADE00D4B73F /* DetailCollectionViewCell.swift in Sources */,
 				D3A9E614223C67C900EBBD87 /* AppDelegate.swift in Sources */,
 				D3A9E61C223C67C900EBBD87 /* VirtualTourist.xcdatamodeld in Sources */,
+				D37677D1225E9A2F008071E5 /* photosLocationClass.swift in Sources */,
 				D3C177D9225BF46300BF65FF /* DataController.swift in Sources */,
 				D35A4000223D85BE005824C7 /* DetailViewController.swift in Sources */,
 				D35A4002223DC34B005824C7 /* NetworkRequest.swift in Sources */,

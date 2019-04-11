@@ -29,7 +29,6 @@ class DataController {
             completion?()
             
             
-            
         }
     }
     

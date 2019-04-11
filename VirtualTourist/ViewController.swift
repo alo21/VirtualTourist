@@ -12,10 +12,15 @@ import CoreData
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
+    
+    var window: UIWindow?
     var removingPins = false
-    var dataConroller: DataController!
+    var dataController: DataController!
     var longPressRec = UILongPressGestureRecognizer()
     var locations: [Location] = []
+    var locationToAdd:Location!
+    var locationPhotos:[Photo] = []
+    var imageArray:[Data] = []
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -27,7 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         //Fetching locations from CoreData
         let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
-        if let result = try? dataConroller.viewContext.fetch(fetchRequest) {
+        if let result = try? dataController.viewContext.fetch(fetchRequest) {
             locations = result
             print("Restoring locations...")
             print(locations.count)
@@ -78,6 +83,23 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     
+    func getArrayIndex(location: MKAnnotation) -> Int{
+        
+        let latString = String(format:"%f", location.coordinate.latitude)
+        let lonString = String(format:"%f", location.coordinate.longitude)
+        
+        for (index, location) in locations.enumerated() {
+            
+            if(location.lon == lonString && location.lat == latString){
+                return index
+            }
+            
+        }
+        
+        return -1
+        
+    }
+    
     //MARK: MKMapViewDelegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -96,7 +118,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             pinView!.annotation = annotation
         }
         
-        
         return pinView
     }
     
@@ -109,6 +130,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         if(removingPins) {
         
+            let locationToDelete = locations[getArrayIndex(location: view.annotation!)]
+            dataController.viewContext.delete(locationToDelete)
+            try? dataController.viewContext.save()
             
             mapView.removeAnnotation(view.annotation!)
         
@@ -116,10 +140,23 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             print("Taking you the other side")
             
+            locations.forEach { (location) in
+                if(location.lat == String(format:"%f", (view.annotation?.coordinate.latitude)!)
+                    && location.lon == String(format:"%f", (view.annotation?.coordinate.longitude)!)){
+                    
+                    print("Trovato la location")
+                    
+                    let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+                    VC1.dataController = dataController
+//                    VC1.lat = String(format:"%f", (view.annotation?.coordinate.latitude)!)
+//                    VC1.lon = String(format:"%f", (view.annotation?.coordinate.longitude)!)
+                    VC1.location = location
+                    self.navigationController!.pushViewController(VC1, animated: true)
+                    
+                }
+            }
         
             
-            let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-            self.navigationController!.pushViewController(VC1, animated: true)
         }
         
 
@@ -128,18 +165,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func saveLocationModel(lat: String, lon: String){
         
         //Creating the transtient to save
-        let location = Location(context: dataConroller.viewContext)
-        location.lat = lat
-        location.lon = lon
+        locationToAdd = Location(context: dataController.viewContext)
+        locationToAdd.lat = lat
+        locationToAdd.lon = lon
         
-        //trying to save into disk
-        do {
-            try? dataConroller.viewContext.save()
-            print("coordinates saved")
-        } catch {
-            print("I can't save the coordinates")
-        }
-        
+        //trying to save into CoreData
+    
+        try? dataController.viewContext.save()
+        print("coordinates saved")
+       
     }
     
     
@@ -161,11 +195,39 @@ class ViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(annotation)
             saveLocationModel(lat: latString, lon: lonString)
             
-            NetworkRequest().getGeoPhotos(lat: latString, lon: lonString)
-            
+            NetworkRequest().getGeoPhotos(lat: latString, lon: lonString, completion: {self.getPhotosArray()})
             
         }
         
+    }
+    
+    func getPhotosArray(){
+        
+        let photos = photosLocationClass().getJsonPhots()
+        
+        
+        photos.forEach { (photo) in
+            NetworkRequest().downloadImage(photo: photo, completion: {self.saveImageDataCore()})
+        }
+        
+    
+    
+    
+    }
+    
+    func saveImageDataCore(){
+        
+        let data = photosLocationClass().getPhoto(atIndex: 0)
+        
+        let binaryPhoto = Photo(context: dataController.viewContext)
+            binaryPhoto.photo = data
+            binaryPhoto.location = locationToAdd
+        try? dataController.viewContext.save()
+            //locationPhotos.insert(binaryPhoto, at: 0)
+            
+            print("photo added")
+            
+
     }
     
     
@@ -181,6 +243,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailViewController: DetailViewController = segue.destination as! DetailViewController
+        detailViewController.dataController = dataController
     }
     
 }
