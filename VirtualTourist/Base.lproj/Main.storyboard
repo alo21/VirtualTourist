@@ -107,12 +107,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="s48-cv-ecl" eventType="touchUpInside" id="prd-Tc-Yf4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wRg-wP-rie"/>
                     </view>
                     <connections>
+                        <outlet property="bottomButton" destination="1PH-tZ-SrR" id="FlD-sN-JQX"/>
                         <outlet property="colletionView" destination="Ie2-vt-XfS" id="isl-w5-c1S"/>
                     </connections>
                 </viewController>

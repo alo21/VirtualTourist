@@ -17,9 +17,15 @@ class NetworkRequest {
     let LOCATION_API_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4142777d545d14823760b6f4f2f3553b&format=json&nojsoncallback=1&per_page=10"
     
     func getGeoPhotos(lat: String, lon: String, completion: @escaping ()->Void){
-
+                
+        let randomNumber = String(arc4random_uniform(4) + 1)
         
-        let request = URLRequest(url: URL(string: LOCATION_API_URL + "&lat=" + lat + "&lon=" + lon )!)
+        print("Rnamdom")
+        print(randomNumber)
+        
+        let composition = LOCATION_API_URL + "&lat=" + lat + "&lon=" + lon
+        
+        let request = URLRequest(url: URL(string:  composition + "&page=" + randomNumber)!)
         let session = URLSession.shared
         
         print("Getting json")

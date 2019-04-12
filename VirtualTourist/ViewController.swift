@@ -209,10 +209,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         photos.forEach { (photo) in
             NetworkRequest().downloadImage(photo: photo, completion: {self.saveImageDataCore()})
         }
-        
-    
-    
-    
+
     }
     
     func saveImageDataCore(){
