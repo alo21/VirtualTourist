@@ -21,6 +21,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var locationToAdd:Location!
     var locationPhotos:[Photo] = []
     var imageArray:[Data] = []
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -193,6 +194,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
             print(coordinates)
             
             mapView.addAnnotation(annotation)
+            
+            
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+            activityIndicator.color = .black
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            
             saveLocationModel(lat: latString, lon: lonString)
             
             NetworkRequest().getGeoPhotos(lat: latString, lon: lonString, completion: {self.getPhotosArray()})
@@ -209,6 +220,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         photos.forEach { (photo) in
             NetworkRequest().downloadImage(photo: photo, completion: {self.saveImageDataCore()})
         }
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+        
+        
+
 
     }
     

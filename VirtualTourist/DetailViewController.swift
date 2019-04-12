@@ -86,7 +86,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             selectedArrayCell.forEach { (cell) in
                 if(indexPath.row == cell){
-                    selectedCell?.backgroundColor = .red
+                    selectedCell?.layer.opacity = 1.0
                     selectedArrayCell = selectedArrayCell.filter{$0 != indexPath.row}
                     print(selectedArrayCell)
                     isDeselection = true
@@ -97,8 +97,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         
         if(isDeselection==false){
-            
-            selectedCell?.backgroundColor = .blue
+            selectedCell?.layer.opacity = 0.5
             selectedArrayCell.append(indexPath.row)
         }
         
