@@ -48,7 +48,17 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        
+        if(photos.count==0){
+            NetworkRequest().getGeoPhotos(lat: self.location.lat!, lon: self.location.lon!, completion: {self.getPhotosArray()})
+            
+        }
+        
+        return photos.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 
 
@@ -92,14 +102,23 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             selectedArrayCell.append(indexPath.row)
         }
         
-        if(!selectedArrayCell.isEmpty){
-            bottomButton.setTitle("Delete", for: .normal)
-        } else {
-            bottomButton.setTitle("New Collection", for: .normal)
-        }
+        setButtonTitle()
         
         print(selectedArrayCell)
         
+        
+    }
+    
+    func setButtonTitle(){
+        
+        DispatchQueue.main.async {
+
+            if(!self.selectedArrayCell.isEmpty){
+                self.bottomButton.setTitle("Delete", for: .normal)
+        } else {
+                self.bottomButton.setTitle("New Collection", for: .normal)
+            }
+        }
         
     }
     
@@ -108,11 +127,21 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if(!selectedArrayCell.isEmpty){
             
+            //Delete selected photos only
             
+            selectedArrayCell.forEach { (selection) in
+                dataController.viewContext.delete(photos[selection])
+            }
             
+            selectedArrayCell = []
+            try? dataController.viewContext.save()
+            print("Selected photo deleted")
+            reloadCollectionView()
             
             
         } else {
+            
+            //Get new collection
             
             deleteImagesDataCore {
                 NetworkRequest().getGeoPhotos(lat: self.location.lat!, lon: self.location.lon!, completion: {self.getPhotosArray()})
@@ -124,6 +153,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func reloadCollectionView(){
         
+        setButtonTitle()
         getCoreDataPhoto()
         
         DispatchQueue.main.async {
