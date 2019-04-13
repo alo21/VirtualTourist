@@ -31,16 +31,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Fetching locations from CoreData
-        let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
-        if let result = try? dataController.viewContext.fetch(fetchRequest) {
-            locations = result
-            print("Restoring locations...")
-            print(locations.count)
-            print("locations restored")
-            populateMap()
-        }
-        
+        getDataCoreLocation()
         deletePopUp.isHidden = true
         
         longPressRec = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotation(press:)))
@@ -141,6 +132,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             print("Taking you the other side")
             
+            getDataCoreLocation()
+            
             locations.forEach { (location) in
                 if(location.lat == String(format:"%f", (view.annotation?.coordinate.latitude)!)
                     && location.lon == String(format:"%f", (view.annotation?.coordinate.longitude)!)){
@@ -159,8 +152,21 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
             
         }
+    }
+    
+    func getDataCoreLocation(){
         
-
+        //Fetching locations from CoreData
+        let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
+        if let result = try? dataController.viewContext.fetch(fetchRequest) {
+            locations = result
+            print("Restoring locations...")
+            print(locations.count)
+            print("locations restored")
+            populateMap()
+        }
+        
+        
     }
     
     func saveLocationModel(lat: String, lon: String){

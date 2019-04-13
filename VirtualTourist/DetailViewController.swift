@@ -185,7 +185,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
         }
         print("All previous imagre deleted")
-        print(location.photos?.count)
         completion()
         
     }
@@ -204,11 +203,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         //locationPhotos.insert(binaryPhoto, at: 0)
         
         print(location.photos?.count)
+        reloadCollectionView()
         print("photo added")
         
-        if(location.photos?.count == 10){
-            reloadCollectionView()
-        }
         
     }
     

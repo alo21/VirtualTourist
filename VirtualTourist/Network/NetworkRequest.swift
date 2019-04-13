@@ -14,7 +14,7 @@ class NetworkRequest {
     
     var photosArray:[photo] = []
     
-    let LOCATION_API_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4142777d545d14823760b6f4f2f3553b&format=json&nojsoncallback=1&per_page=10"
+    let LOCATION_API_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=4142777d545d14823760b6f4f2f3553b&format=json&nojsoncallback=1&per_page=20"
     
     func getGeoPhotos(lat: String, lon: String, completion: @escaping ()->Void){
                 
