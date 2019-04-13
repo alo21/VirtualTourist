@@ -41,6 +41,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         
+        populateMap()
+        
     }
     
     
@@ -132,8 +134,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             print("Taking you the other side")
             
-            getDataCoreLocation()
-            
             locations.forEach { (location) in
                 if(location.lat == String(format:"%f", (view.annotation?.coordinate.latitude)!)
                     && location.lon == String(format:"%f", (view.annotation?.coordinate.longitude)!)){
@@ -163,7 +163,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             print("Restoring locations...")
             print(locations.count)
             print("locations restored")
-            populateMap()
         }
         
         
@@ -179,6 +178,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //trying to save into CoreData
     
         try? dataController.viewContext.save()
+        getDataCoreLocation()
         print("coordinates saved")
        
     }
