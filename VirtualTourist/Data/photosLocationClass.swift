@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct photosLocation: Codable {
+struct PhotosLocation: Codable {
     var lat: String
     var lon: String
     var photos:[Data]
     var jsonPhotos:[photo]
 }
 
-var globalPhotosLocation: photosLocation = photosLocation(lat: "", lon: "", photos: [], jsonPhotos: [])
+var globalPhotosLocation: PhotosLocation = PhotosLocation(lat: "", lon: "", photos: [], jsonPhotos: [])
 
 
 class photosLocationClass{

@@ -22,13 +22,12 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet var bottomButton: UIButton!
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.colletionView.delegate = self
         self.colletionView.dataSource = self
-            
+        
         getCoreDataPhoto()
         
     }
@@ -51,7 +50,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if(photos.count==0){
+        if photos.count==0 {
             NetworkRequest().getGeoPhotos(lat: self.location.lat!, lon: self.location.lon!, completion: {self.getPhotosArray()})
             
         }
@@ -63,29 +62,22 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
-
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         
-
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DetailCollectionViewCell
         
         if (indexPath as NSIndexPath).row < photos.count {
             let photo = photos[(indexPath as NSIndexPath).row]
             cell.photo.image = UIImage(data: photo.photo!,scale:1.0)
-        
-        } else if(!bottomButton.isEnabled) {
+            
+        } else if !bottomButton.isEnabled {
             
             cell.photo.image = UIImage(named: "placeholder")
             
         }
-
+        
         return cell
     }
     
@@ -95,10 +87,10 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         let selectedCell = collectionView.cellForItem(at: indexPath)
         
         
-        if(!selectedArrayCell.isEmpty){
+        if !selectedArrayCell.isEmpty {
             
             selectedArrayCell.forEach { (cell) in
-                if(indexPath.row == cell){
+                if indexPath.row == cell {
                     selectedCell?.layer.opacity = 1.0
                     selectedArrayCell = selectedArrayCell.filter{$0 != indexPath.row}
                     print(selectedArrayCell)
@@ -109,7 +101,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
         }
         
-        if(isDeselection==false){
+        if !isDeselection {
             selectedCell?.layer.opacity = 0.5
             selectedArrayCell.append(indexPath.row)
         }
@@ -124,10 +116,10 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func setButtonTitle(){
         
         DispatchQueue.main.async {
-
-            if(!self.selectedArrayCell.isEmpty){
+            
+            if !self.selectedArrayCell.isEmpty{
                 self.bottomButton.setTitle("Delete", for: .normal)
-        } else {
+            } else {
                 self.bottomButton.setTitle("New Collection", for: .normal)
             }
         }
@@ -137,7 +129,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func onButtonPressed(_ sender: UIButton) {
         
-        if(!selectedArrayCell.isEmpty){
+        if !selectedArrayCell.isEmpty {
             
             //Delete selected photos only
             
@@ -160,7 +152,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             deleteImagesDataCore {
                 NetworkRequest().getGeoPhotos(lat: self.location.lat!, lon: self.location.lon!, completion: {self.getPhotosArray()})
             }
-    
+            
         }
         
     }
@@ -179,14 +171,12 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.bottomButton.isEnabled = true
             }
         }
-    
-        print("view Reloaded")
         
+        print("view Reloaded")
         
     }
     
-    
-    
+
     func getPhotosArray(){
         
         let photos = photosLocationClass().getJsonPhots()
@@ -210,14 +200,11 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         completion()
         
     }
-    
-    
-    
-    
+ 
     func saveImageDataCore(){
         
         let data = photosLocationClass().getPhoto(atIndex: 0)
-
+        
         let binaryPhoto = Photo(context: dataController.viewContext)
         binaryPhoto.photo = data
         binaryPhoto.location = location
@@ -227,7 +214,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         print(location.photos?.count)
         reloadCollectionView()
         print("photo added")
-        
         
     }
     
