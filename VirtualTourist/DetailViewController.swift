@@ -15,7 +15,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     var dataController: DataController!
     var location: Location!
     var photos: [Photo] = []
+    let finalPiece: [UIImage] = []
     var selectedArrayCell:[Int] = []
+    let maxPhoto = 20
     @IBOutlet var colletionView: UICollectionView!
     @IBOutlet var bottomButton: UIButton!
     
@@ -54,7 +56,11 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
         }
         
-        return photos.count
+        if bottomButton.isEnabled && photos.count != 0 {
+            return photos.count
+        } else {
+            return maxPhoto
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -66,12 +72,19 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
+        
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DetailCollectionViewCell
-        let photo = photos[(indexPath as NSIndexPath).row]
-
-
-        cell.photo.image = UIImage(data: photo.photo!,scale:1.0)
+        
+        if (indexPath as NSIndexPath).row < photos.count {
+            let photo = photos[(indexPath as NSIndexPath).row]
+            cell.photo.image = UIImage(data: photo.photo!,scale:1.0)
+        
+        } else if(!bottomButton.isEnabled) {
+            
+            cell.photo.image = UIImage(named: "placeholder")
+            
+        }
 
         return cell
     }
@@ -142,6 +155,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             //Get new collection
             
+            sender.isEnabled = false
+            
             deleteImagesDataCore {
                 NetworkRequest().getGeoPhotos(lat: self.location.lat!, lon: self.location.lon!, completion: {self.getPhotosArray()})
             }
@@ -159,7 +174,14 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.colletionView.reloadData()
         }
         
+        if photos.count == maxPhoto {
+            DispatchQueue.main.async {
+                self.bottomButton.isEnabled = true
+            }
+        }
+    
         print("view Reloaded")
+        
         
     }
     
